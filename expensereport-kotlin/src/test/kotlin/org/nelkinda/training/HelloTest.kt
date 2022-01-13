@@ -4,15 +4,9 @@ import com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut
 import org.approvaltests.Approvals
 import org.junit.Ignore
 import org.junit.Test
-import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class HelloTest {
-
-    @Test
-    fun dummy() {
-
-    }
 
     @Test
     fun `capture print output and make sure it is not empty`() {
