@@ -23,15 +23,13 @@ class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
         var result = ""
         var total = 0
-        var mealExpenses = 0
 
         result += "Expenses " + Date() + "\n"
 
-        expenses.forEach { expense ->
-            if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
-                mealExpenses += expense.amount!!
-            }
-        }
+        val mealExpenses =
+            expenses.filter { expense ->
+                expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST }
+                .sumOf { expense -> expense.amount!! }
 
         expenses.forEach { expense ->
             val expenseOverLimitMarker = "X"
