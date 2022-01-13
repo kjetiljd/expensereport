@@ -25,7 +25,7 @@ class HelloTest {
         assertTrue(actual.isNotEmpty())
     }
 
-    @Test @Ignore("WIP")
+    @Test
     fun `first line in report has correct format`() {
         val noExpenses = emptyList<Expense>()
 
@@ -33,7 +33,8 @@ class HelloTest {
             ExpenseReport().printReport(noExpenses)
         }
 
-        // assert first line in report is correct format
+        val expected = """Expenses \w{3} \w{3} \d{1,2} \d\d:\d\d:\d\d [A-Z]{3} 20\d\d""".toRegex()
+        assertTrue(actual.lines().first().matches(expected))
 
     }
 
