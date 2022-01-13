@@ -27,7 +27,7 @@ class ExpenseReport {
 
         result += "Expenses " + Date() + "\n"
 
-        val mealExpenses = expenses.filter(Expense::isMeal).sumOf { it.amount!! }
+        val mealExpenseTotal = expenses.filter(Expense::isMeal).sumOf { it.amount!! }
 
         val total = expenses.sumOf { it.amount!! }
 
@@ -35,7 +35,7 @@ class ExpenseReport {
             result += expenseLine(expense)
         }
 
-        result += "Meal expenses: $mealExpenses\n"
+        result += "Meal expenses: $mealExpenseTotal\n"
         result += "Total expenses: $total"
         println(result)
     }
