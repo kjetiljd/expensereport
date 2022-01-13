@@ -17,6 +17,9 @@ data class Expense(
             ExpenseType.CAR_RENTAL -> "Car Rental"
             null -> ""
         }
+
+    fun isOverLimit() =
+        type == ExpenseType.DINNER && amount!! > 5000 || type == ExpenseType.BREAKFAST && amount!! > 1000
 }
 
 class ExpenseReport {
@@ -46,6 +49,5 @@ class ExpenseReport {
     }
 
 
-    internal fun isOverLimit(expense: Expense) =
-        expense.type == ExpenseType.DINNER && expense.amount!! > 5000 || expense.type == ExpenseType.BREAKFAST && expense.amount!! > 1000
+    internal fun isOverLimit(expense: Expense) = expense.isOverLimit()
 }
