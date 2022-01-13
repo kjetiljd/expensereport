@@ -5,4 +5,9 @@ import kotlin.test.assertEquals
 
 class HelloTest {
 
+    @Test
+    fun dummy() {
+
+    }
+
 }
