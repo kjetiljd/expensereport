@@ -35,4 +35,17 @@ class HelloTest {
         Approvals.verify(actualWithoutDynamicHeader)
     }
 
+    @Test
+    @Ignore("WIP")
+    fun `golden master for all known expense types`() {
+
+        val noExpenses = emptyList<Expense>()
+
+        val actual = tapSystemOut {
+            ExpenseReport().printReport(noExpenses)
+        }
+        Approvals.verify(reportWithoutHeading(actual))
+    }
+
+    private fun reportWithoutHeading(actual: String) = actual.lines().drop(1).joinToString("\n")
 }
