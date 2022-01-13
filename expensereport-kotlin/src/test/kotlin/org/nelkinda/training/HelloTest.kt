@@ -28,7 +28,7 @@ class HelloTest {
             ExpenseReport().printReport(noExpenses)
         }
 
-        Approvals.verify(withoutDynamicHeading(actual))
+        Approvals.verify(actual.withoutDynamicHeading())
     }
 
     @Test
@@ -42,7 +42,7 @@ class HelloTest {
         val actual = tapSystemOut {
             ExpenseReport().printReport(noExpenses)
         }
-        Approvals.verify(withoutDynamicHeading(actual))
+        Approvals.verify(actual.withoutDynamicHeading())
     }
 
     private fun expense(type: ExpenseType, amount: Int): Expense {
@@ -52,5 +52,5 @@ class HelloTest {
         return dinner
     }
 
-    private fun withoutDynamicHeading(actual: String) = actual.lines().drop(1).joinToString("\n")
+    private fun String.withoutDynamicHeading() = this.lines().drop(1).joinToString("\n")
 }
