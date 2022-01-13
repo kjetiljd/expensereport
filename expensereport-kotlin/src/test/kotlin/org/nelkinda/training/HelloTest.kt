@@ -24,4 +24,15 @@ class HelloTest {
         assertTrue(actual.isNotEmpty())
     }
 
+    @Test @Ignore("WIP")
+    fun `first line in report has correct format`() {
+        val noExpenses = emptyList<Expense>()
+
+        val actual = tapSystemOut {
+            ExpenseReport().printReport(noExpenses)
+        }
+
+        // assert first line in report is correct format
+    }
+
 }
