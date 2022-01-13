@@ -7,8 +7,8 @@ enum class ExpenseType {
 }
 
 class Expense(
-    var type: ExpenseType? = null,
-    var amount: Int? = null
+    val type: ExpenseType? = null,
+    val amount: Int? = null
 )
 
 class ExpenseReport {
