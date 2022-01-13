@@ -35,12 +35,10 @@ class ExpenseReport {
                 mealExpenses += expense.amount!!
             }
 
-            val expenseName = expense.name()
-
             val expenseOverLimitMarker = "X"
             val mealOverExpensesMarker = if (isOverLimit(expense)) expenseOverLimitMarker else " "
 
-            result += expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker + "\n"
+            result += expense.name() + "\t" + expense.amount + "\t" + mealOverExpensesMarker + "\n"
 
             total += expense.amount!!
         }
