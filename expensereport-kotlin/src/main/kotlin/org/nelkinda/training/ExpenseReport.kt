@@ -24,15 +24,12 @@ data class Expense(
 class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
         var result = ""
-        var total = 0
 
         result += "Expenses " + Date() + "\n"
 
         val mealExpenses = expenses.filter(Expense::isMeal).sumOf { it.amount!! }
 
-        expenses.forEach { expense ->
-            total += expense.amount!!
-        }
+        val total = expenses.sumOf { it.amount!! }
 
         expenses.forEach { expense ->
             val expenseOverLimitMarker = "X"
