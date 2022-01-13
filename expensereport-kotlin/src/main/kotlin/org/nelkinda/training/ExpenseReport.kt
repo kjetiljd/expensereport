@@ -32,5 +32,5 @@ class ExpenseReport {
     }
 
     private fun expenseLine(expense: Expense) =
-        expense.name + "\t" + expense.amount + "\t" + (if (expense.isOverLimit) "X" else " ") + "\n"
+        "${expense.name}\t${expense.amount}\t${if (expense.isOverLimit) "X" else " "}\n"
 }
