@@ -9,17 +9,6 @@ import kotlin.test.assertTrue
 class HelloTest {
 
     @Test
-    fun `capture print output and make sure it is not empty`() {
-        val noExpenses = emptyList<Expense>()
-
-        val actual = tapSystemOut {
-            ExpenseReport().printReport(noExpenses)
-        }
-
-        assertTrue(actual.isNotEmpty())
-    }
-
-    @Test
     fun `first line in report has correct format`() {
         val noExpenses = emptyList<Expense>()
 
