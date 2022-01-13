@@ -34,14 +34,14 @@ class HelloTest {
 
     @Test
     fun `golden master for all known expense types`() {
-        val noExpenses = listOf(
+        val expenses = listOf(
             expense(ExpenseType.DINNER, 800),
             expense(ExpenseType.BREAKFAST, 350),
             expense(ExpenseType.CAR_RENTAL, 1200)
         )
 
         val actual = tapSystemOut {
-            ExpenseReport().printReport(noExpenses)
+            ExpenseReport().printReport(expenses)
         }
         Approvals.verify(actual.withoutDynamicHeading())
     }
