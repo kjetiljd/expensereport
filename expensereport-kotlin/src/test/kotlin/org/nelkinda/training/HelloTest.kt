@@ -1,8 +1,10 @@
 package org.nelkinda.training
 
+import com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut
 import org.junit.Ignore
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 class HelloTest {
 
@@ -11,14 +13,15 @@ class HelloTest {
 
     }
 
-    @Test @Ignore("wip")
-    fun `capture print output and assert`() {
-        // given
+    @Test
+    fun `capture print output and make sure it is not empty`() {
+        val noExpenses = emptyList<Expense>()
 
-        // when
+        val actual = tapSystemOut {
+            ExpenseReport().printReport(noExpenses)
+        }
 
-        // then
-
+        assertTrue(actual.isNotEmpty())
     }
 
 }
