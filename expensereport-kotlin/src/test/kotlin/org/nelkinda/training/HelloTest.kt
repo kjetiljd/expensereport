@@ -47,6 +47,11 @@ class HelloTest {
     }
 
     @Test @Ignore("WIP")
+    fun `golden master for expenses over limit`() {
+
+    }
+
+    @Test @Ignore("WIP")
     fun `null values in input`() {
         // given
 
