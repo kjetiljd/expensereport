@@ -24,12 +24,14 @@ private val List<Expense>.total get() = this.sumOf { it.amount!! }
 
 class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
-        val result = "Expenses ${Date()}\n" +
-                expenses.joinToString("") { expenseLine(it) } +
-                "Meal expenses: ${expenses.mealTotal}\n" +
-                "Total expenses: ${expenses.total}"
-        println(result)
+        println(generateReport(expenses))
     }
+
+    private fun generateReport(expenses: List<Expense>) =
+        "Expenses ${Date()}\n" +
+            expenses.joinToString("") { expenseLine(it) } +
+            "Meal expenses: ${expenses.mealTotal}\n" +
+            "Total expenses: ${expenses.total}"
 
     private fun expenseLine(expense: Expense) =
         "${expense.name}\t${expense.amount}\t${if (expense.isOverLimit) "X" else " "}\n"
