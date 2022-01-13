@@ -31,7 +31,9 @@ class ExpenseReport {
             if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
                 mealExpenses += expense.amount!!
             }
+        }
 
+        expenses.forEach { expense ->
             val expenseOverLimitMarker = "X"
             val mealOverExpensesMarker = if (expense.isOverLimit()) expenseOverLimitMarker else " "
 
