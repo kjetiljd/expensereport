@@ -2,6 +2,7 @@ package org.nelkinda.training
 
 import com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut
 import org.approvaltests.Approvals
+import org.junit.Ignore
 import org.junit.Test
 import kotlin.test.assertTrue
 
@@ -43,6 +44,16 @@ class HelloTest {
             ExpenseReport().printReport(noExpenses)
         }
         Approvals.verify(actual.withoutDynamicHeading())
+    }
+
+    @Test @Ignore("WIP")
+    fun `null values in input`() {
+        // given
+
+        // when
+
+        // then
+
     }
 
     private fun expense(type: ExpenseType, amount: Int): Expense {
