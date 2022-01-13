@@ -28,8 +28,7 @@ class HelloTest {
             ExpenseReport().printReport(noExpenses)
         }
 
-        val actualWithoutDynamicHeader = withoutDynamicHeading(actual)
-        Approvals.verify(actualWithoutDynamicHeader)
+        Approvals.verify(withoutDynamicHeading(actual))
     }
 
     @Test
