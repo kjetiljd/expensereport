@@ -5,6 +5,7 @@ import org.approvaltests.Approvals
 import org.junit.Ignore
 import org.junit.Test
 import kotlin.test.assertTrue
+import kotlin.test.fail
 
 class HelloTest {
 
@@ -59,14 +60,31 @@ class HelloTest {
         Approvals.verify(actual.withoutDynamicHeading())
     }
 
-    @Test @Ignore("WIP")
-    fun `null values in input`() {
-        // given
+    @Test
+    fun `null value in amount throws NPE`() {
+        val nullAmountExpense = listOf(
+            Expense(ExpenseType.DINNER, null),
+        )
 
-        // when
+        try{
+            ExpenseReport().printReport(nullAmountExpense)
+            fail("Expected NullPointerException on null amount")
+        } catch (e: NullPointerException) {
+            // yay
+        }
+    }
 
-        // then
+    @Test
+    fun `null value in type returns a report with no type on expense line`() {
+        val nullTypeExpense = listOf(
+            Expense(null, 666),
+        )
 
+        val actual = tapSystemOut {
+            ExpenseReport().printReport(nullTypeExpense)
+        }
+
+        Approvals.verify(actual.withoutDynamicHeading())
     }
 
     private fun String.withoutDynamicHeading() = this.lines().drop(1).joinToString("\n")
