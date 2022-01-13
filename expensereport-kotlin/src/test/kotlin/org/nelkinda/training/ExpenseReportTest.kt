@@ -90,7 +90,11 @@ class ExpenseReportTest {
 
     @Test
     fun `isOverLimit for expense types without limit`() {
-        assertFalse(ExpenseReport().isOverLimit(Expense(type = ExpenseType.CAR_RENTAL, Integer.MAX_VALUE)))
+        val typesWithoutLimit = listOf(ExpenseType.CAR_RENTAL)
+
+        typesWithoutLimit.forEach { expenseType ->
+            assertFalse(ExpenseReport().isOverLimit(Expense(type = expenseType, Integer.MAX_VALUE)))
+        }
     }
 
     private fun String.withoutDynamicHeading() = this.lines().drop(1).joinToString("\n")
