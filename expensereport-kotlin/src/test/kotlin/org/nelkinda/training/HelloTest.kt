@@ -2,7 +2,6 @@ package org.nelkinda.training
 
 import com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut
 import org.approvaltests.Approvals
-import org.junit.Ignore
 import org.junit.Test
 import kotlin.test.assertTrue
 
@@ -29,7 +28,7 @@ class HelloTest {
             ExpenseReport().printReport(noExpenses)
         }
 
-        val actualWithoutDynamicHeader = reportWithoutHeading(actual)
+        val actualWithoutDynamicHeader = withoutDynamicHeading(actual)
         Approvals.verify(actualWithoutDynamicHeader)
     }
 
@@ -44,7 +43,7 @@ class HelloTest {
         val actual = tapSystemOut {
             ExpenseReport().printReport(noExpenses)
         }
-        Approvals.verify(reportWithoutHeading(actual))
+        Approvals.verify(withoutDynamicHeading(actual))
     }
 
     private fun expense(type: ExpenseType, amount: Int): Expense {
@@ -54,5 +53,5 @@ class HelloTest {
         return dinner
     }
 
-    private fun reportWithoutHeading(actual: String) = actual.lines().drop(1).joinToString("\n")
+    private fun withoutDynamicHeading(actual: String) = actual.lines().drop(1).joinToString("\n")
 }
