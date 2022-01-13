@@ -29,7 +29,7 @@ class ExpenseReport {
         var result = ""
         result += "Expenses " + Date() + "\n"
         expenses.forEach { expense ->
-            result += expenseLine(expense)
+            result += expenseLine(expense) + "\n"
         }
         result += "Meal expenses: ${expenses.mealTotal()}\n"
         result += "Total expenses: ${expenses.total()}"
@@ -38,7 +38,7 @@ class ExpenseReport {
 
     private fun expenseLine(expense: Expense): String {
         val mealOverExpensesMarker = if (expense.isOverLimit()) "X" else " "
-        return expense.name() + "\t" + expense.amount + "\t" + mealOverExpensesMarker + "\n"
+        return expense.name() + "\t" + expense.amount + "\t" + mealOverExpensesMarker
     }
 
 
