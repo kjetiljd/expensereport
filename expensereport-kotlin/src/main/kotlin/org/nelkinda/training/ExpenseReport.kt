@@ -21,20 +21,18 @@ data class Expense(
     fun isMeal() = type?.isMealType ?: false
 }
 
+private fun List<Expense>.mealTotal() = this.filter(Expense::isMeal).sumOf { it.amount!! }
+private fun List<Expense>.total() = this.sumOf { it.amount!! }
+
 class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
         var result = ""
-
         result += "Expenses " + Date() + "\n"
-
-        val total = total(expenses)
-
         expenses.forEach { expense ->
             result += expenseLine(expense)
         }
-
-        result += "Meal expenses: ${mealTotal(expenses)}\n"
-        result += "Total expenses: $total"
+        result += "Meal expenses: ${expenses.mealTotal()}\n"
+        result += "Total expenses: ${expenses.total()}"
         println(result)
     }
 
@@ -45,7 +43,3 @@ class ExpenseReport {
 
 
 }
-
-private fun ExpenseReport.total(expenses: List<Expense>) = expenses.sumOf { it.amount!! }
-
-private fun ExpenseReport.mealTotal(expenses: List<Expense>) = expenses.filter(Expense::isMeal).sumOf { it.amount!! }
