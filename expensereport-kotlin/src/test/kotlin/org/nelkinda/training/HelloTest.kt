@@ -29,9 +29,7 @@ class HelloTest {
             ExpenseReport().printReport(noExpenses)
         }
 
-        val actualWithoutDynamicHeader = actual.lines()
-            .filterIndexed { index, _ -> index != 0 }
-            .joinToString("\n")
+        val actualWithoutDynamicHeader = reportWithoutHeading(actual)
         Approvals.verify(actualWithoutDynamicHeader)
     }
 
