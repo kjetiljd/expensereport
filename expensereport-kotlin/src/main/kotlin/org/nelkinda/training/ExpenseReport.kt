@@ -19,7 +19,7 @@ class ExpenseReport {
 
         result += "Expenses " + Date() + "\n"
 
-        for (expense in expenses) {
+        expenses.forEach { expense ->
             if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
                 mealExpenses += expense.amount!!
             }
