@@ -22,14 +22,17 @@ class HelloTest {
     }
 
     @Test
-    @Ignore("Depends on current time")
-    fun `golden master test of program output`() {
+    fun `golden master test of main program output`() {
         val noExpenses = emptyList<Expense>()
 
         val actual = tapSystemOut {
             ExpenseReport().printReport(noExpenses)
         }
-        Approvals.verify(actual)
+
+        val actualWithoutDynamicHeader = actual.lines()
+            .filterIndexed { index, _ -> index != 0 }
+            .joinToString("\n")
+        Approvals.verify(actualWithoutDynamicHeader)
     }
 
 }
