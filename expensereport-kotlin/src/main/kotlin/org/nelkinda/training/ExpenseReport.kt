@@ -30,9 +30,10 @@ class ExpenseReport {
                 ExpenseType.CAR_RENTAL -> expenseName = "Car Rental"
             }
 
+            val expenseOverLimitMarker = "X"
             val mealOverExpensesMarker = when {
-                expense.type == ExpenseType.DINNER && expense.amount!! > 5000 -> "X"
-                expense.type == ExpenseType.BREAKFAST && expense.amount!! > 1000 -> "X"
+                expense.type == ExpenseType.DINNER && expense.amount!! > 5000 -> expenseOverLimitMarker
+                expense.type == ExpenseType.BREAKFAST && expense.amount!! > 1000 -> expenseOverLimitMarker
                 else -> " "
             }
 
