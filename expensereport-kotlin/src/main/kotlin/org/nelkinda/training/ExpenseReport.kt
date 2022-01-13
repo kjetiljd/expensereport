@@ -2,21 +2,17 @@ package org.nelkinda.training
 
 import java.util.*
 
-enum class ExpenseType {
-    DINNER, BREAKFAST, CAR_RENTAL
+enum class ExpenseType(val text: String) {
+    DINNER("Dinner"),
+    BREAKFAST("Breakfast"),
+    CAR_RENTAL("Car Rental")
 }
 
 data class Expense(
     val type: ExpenseType? = null,
     val amount: Int? = null) {
 
-    fun name(): String =
-        when (type) {
-            ExpenseType.DINNER -> "Dinner"
-            ExpenseType.BREAKFAST -> "Breakfast"
-            ExpenseType.CAR_RENTAL -> "Car Rental"
-            null -> ""
-        }
+    fun name() = type?.text ?: ""
 
     fun isOverLimit() =
         type == ExpenseType.DINNER && amount!! > 5000 || type == ExpenseType.BREAKFAST && amount!! > 1000
