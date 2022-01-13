@@ -25,7 +25,7 @@ private val List<Expense>.total get() = this.sumOf { it.amount!! }
 class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
         val result = "Expenses ${Date()}\n" +
-                expenses.map { expenseLine(it) }.joinToString("") +
+                expenses.joinToString("") { expenseLine(it) } +
                 "Meal expenses: ${expenses.mealTotal}\n" +
                 "Total expenses: ${expenses.total}"
         println(result)
