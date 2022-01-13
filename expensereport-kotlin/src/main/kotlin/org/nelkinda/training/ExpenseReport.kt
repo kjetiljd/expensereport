@@ -32,8 +32,7 @@ class ExpenseReport {
 
             val expenseOverLimitMarker = "X"
             val mealOverExpensesMarker = when {
-                expense.type == ExpenseType.DINNER && expense.amount!! > 5000 -> expenseOverLimitMarker
-                expense.type == ExpenseType.BREAKFAST && expense.amount!! > 1000 -> expenseOverLimitMarker
+                expense.type == ExpenseType.DINNER && expense.amount!! > 5000 || expense.type == ExpenseType.BREAKFAST && expense.amount!! > 1000 -> expenseOverLimitMarker
                 else -> " "
             }
 
