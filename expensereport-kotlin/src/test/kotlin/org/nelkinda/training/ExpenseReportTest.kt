@@ -4,6 +4,7 @@ import com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut
 import org.approvaltests.Approvals
 import org.junit.Ignore
 import org.junit.Test
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
@@ -85,6 +86,11 @@ class ExpenseReportTest {
         }
 
         Approvals.verify(actual.withoutDynamicHeading())
+    }
+
+    @Test
+    fun `isOverLimit for expense types without limit`() {
+        assertFalse(ExpenseReport().isOverLimit(Expense(type = ExpenseType.CAR_RENTAL, Integer.MAX_VALUE)))
     }
 
     private fun String.withoutDynamicHeading() = this.lines().drop(1).joinToString("\n")
