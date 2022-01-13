@@ -10,7 +10,7 @@ data class Expense(
     val type: ExpenseType? = null,
     val amount: Int? = null) {
 
-    fun expenseName(): String {
+    fun name(): String {
         val expenseName =
             when (this.type) {
                 ExpenseType.DINNER -> "Dinner"
@@ -35,7 +35,7 @@ class ExpenseReport {
                 mealExpenses += expense.amount!!
             }
 
-            val expenseName = expense.expenseName()
+            val expenseName = expense.name()
 
             val expenseOverLimitMarker = "X"
             val mealOverExpensesMarker = if (isOverLimit(expense)) expenseOverLimitMarker else " "
