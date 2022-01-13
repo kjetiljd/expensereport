@@ -27,15 +27,13 @@ class ExpenseReport {
 
         result += "Expenses " + Date() + "\n"
 
-        val mealExpenseTotal = mealTotal(expenses)
-
         val total = expenses.sumOf { it.amount!! }
 
         expenses.forEach { expense ->
             result += expenseLine(expense)
         }
 
-        result += "Meal expenses: $mealExpenseTotal\n"
+        result += "Meal expenses: ${mealTotal(expenses)}\n"
         result += "Total expenses: $total"
         println(result)
     }
