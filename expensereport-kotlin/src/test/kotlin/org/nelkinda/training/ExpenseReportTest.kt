@@ -108,6 +108,12 @@ class ExpenseReportTest {
             assertFalse(expenseClearlyUnderLimit.isOverLimit())
         }
     }
+    
+    @Test
+    fun `isOverLimit on a null expense type`() {
+        val expenseWithoutType = Expense(type = null, amount = Integer.MAX_VALUE)
+        assertFalse(expenseWithoutType.isOverLimit())
+    }
 
     private fun String.withoutDynamicHeading() = this.lines().drop(1).joinToString("\n")
 }
