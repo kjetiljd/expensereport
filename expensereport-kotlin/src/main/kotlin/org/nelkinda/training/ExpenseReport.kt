@@ -6,7 +6,7 @@ enum class ExpenseType {
     DINNER, BREAKFAST, CAR_RENTAL
 }
 
-class Expense(
+data class Expense(
     val type: ExpenseType? = null,
     val amount: Int? = null
 )
