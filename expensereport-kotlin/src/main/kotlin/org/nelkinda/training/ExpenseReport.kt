@@ -27,7 +27,7 @@ class ExpenseReport {
 
         result += "Expenses " + Date() + "\n"
 
-        val total = expenses.sumOf { it.amount!! }
+        val total = total(expenses)
 
         expenses.forEach { expense ->
             result += expenseLine(expense)
@@ -39,6 +39,8 @@ class ExpenseReport {
     }
 
     private fun mealTotal(expenses: List<Expense>) = expenses.filter(Expense::isMeal).sumOf { it.amount!! }
+
+    private fun total(expenses: List<Expense>) = expenses.sumOf { it.amount!! }
 
     private fun expenseLine(expense: Expense): String {
         val mealOverExpensesMarker = if (expense.isOverLimit()) "X" else " "
