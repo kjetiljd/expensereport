@@ -28,10 +28,7 @@ class ExpenseReport {
 
         result += "Expenses " + Date() + "\n"
 
-        val mealExpenses =
-            expenses.filter { expense ->
-                expense.isMeal() }
-                .sumOf { expense -> expense.amount!! }
+        val mealExpenses = expenses.filter(Expense::isMeal).sumOf { it.amount!! }
 
         expenses.forEach { expense ->
             val expenseOverLimitMarker = "X"
