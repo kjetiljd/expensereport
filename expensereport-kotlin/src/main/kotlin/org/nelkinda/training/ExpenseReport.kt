@@ -2,7 +2,7 @@ package org.nelkinda.training
 
 import java.util.*
 
-enum class ExpenseType(val text: String, val limit: Int? = null) {
+enum class ExpenseType(val text: String, private val limit: Int? = null) {
     DINNER("Dinner", 5000),
     BREAKFAST("Breakfast", 1000),
     CAR_RENTAL("Car Rental");
