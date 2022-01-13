@@ -31,12 +31,14 @@ class ExpenseReport {
         val mealExpenses = expenses.filter(Expense::isMeal).sumOf { it.amount!! }
 
         expenses.forEach { expense ->
+            total += expense.amount!!
+        }
+
+        expenses.forEach { expense ->
             val expenseOverLimitMarker = "X"
             val mealOverExpensesMarker = if (expense.isOverLimit()) expenseOverLimitMarker else " "
 
             result += expense.name() + "\t" + expense.amount + "\t" + mealOverExpensesMarker + "\n"
-
-            total += expense.amount!!
         }
 
         result += "Meal expenses: $mealExpenses\n"
