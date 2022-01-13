@@ -24,13 +24,7 @@ class ExpenseReport {
                 mealExpenses += expense.amount!!
             }
 
-            val expenseName =
-                when (expense.type) {
-                    ExpenseType.DINNER -> "Dinner"
-                    ExpenseType.BREAKFAST -> "Breakfast"
-                    ExpenseType.CAR_RENTAL -> "Car Rental"
-                    null -> ""
-                }
+            val expenseName = expenseName(expense)
 
             val expenseOverLimitMarker = "X"
             val mealOverExpensesMarker = if (isOverLimit(expense)) expenseOverLimitMarker else " "
@@ -43,6 +37,17 @@ class ExpenseReport {
         result += "Meal expenses: $mealExpenses\n"
         result += "Total expenses: $total"
         println(result)
+    }
+
+    private fun expenseName(expense: Expense): String {
+        val expenseName =
+            when (expense.type) {
+                ExpenseType.DINNER -> "Dinner"
+                ExpenseType.BREAKFAST -> "Breakfast"
+                ExpenseType.CAR_RENTAL -> "Car Rental"
+                null -> ""
+            }
+        return expenseName
     }
 
     internal fun isOverLimit(expense: Expense) =
