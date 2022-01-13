@@ -6,10 +6,10 @@ enum class ExpenseType {
     DINNER, BREAKFAST, CAR_RENTAL
 }
 
-class Expense {
-    var type: ExpenseType? = null
+class Expense(
+    var type: ExpenseType? = null,
     var amount: Int? = null
-}
+)
 
 class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
