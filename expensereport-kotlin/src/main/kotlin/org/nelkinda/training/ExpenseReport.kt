@@ -47,6 +47,6 @@ class ExpenseReport {
         println(result)
     }
 
-    private fun isOverLimit(expense: Expense) =
+    internal fun isOverLimit(expense: Expense) =
         expense.type == ExpenseType.DINNER && expense.amount!! > 5000 || expense.type == ExpenseType.BREAKFAST && expense.amount!! > 1000
 }
