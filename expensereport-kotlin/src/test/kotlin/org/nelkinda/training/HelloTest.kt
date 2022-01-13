@@ -22,7 +22,7 @@ class HelloTest {
     }
 
     @Test
-    fun `golden master test of main program output`() {
+    fun `golden master with no expense of main program output`() {
         val noExpenses = emptyList<Expense>()
 
         val actual = tapSystemOut {
