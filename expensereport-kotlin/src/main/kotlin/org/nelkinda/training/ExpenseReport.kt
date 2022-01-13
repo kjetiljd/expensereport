@@ -5,7 +5,9 @@ import java.util.*
 enum class ExpenseType(val text: String) {
     DINNER("Dinner"),
     BREAKFAST("Breakfast"),
-    CAR_RENTAL("Car Rental")
+    CAR_RENTAL("Car Rental");
+
+    fun isOverLimit(amount: Int) = this == DINNER && amount > 5000 || this == BREAKFAST && amount > 1000
 }
 
 data class Expense(
@@ -14,8 +16,7 @@ data class Expense(
 
     fun name() = type?.text ?: ""
 
-    fun isOverLimit() =
-        type == ExpenseType.DINNER && amount!! > 5000 || type == ExpenseType.BREAKFAST && amount!! > 1000
+    fun isOverLimit() = type?.isOverLimit(amount!!) ?: false
 }
 
 class ExpenseReport {
