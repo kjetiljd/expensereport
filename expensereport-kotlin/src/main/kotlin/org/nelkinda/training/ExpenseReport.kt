@@ -13,10 +13,11 @@ data class Expense(
 
 class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
+        var result = ""
         var total = 0
         var mealExpenses = 0
 
-        println("Expenses " + Date())
+        result += "Expenses " + Date() + "\n"
 
         for (expense in expenses) {
             if (expense.type == ExpenseType.DINNER || expense.type == ExpenseType.BREAKFAST) {
@@ -36,13 +37,14 @@ class ExpenseReport {
                 else -> " "
             }
 
-            println(expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker)
+            result += expenseName + "\t" + expense.amount + "\t" + mealOverExpensesMarker + "\n"
 
             total += expense.amount!!
         }
 
-        println("Meal expenses: $mealExpenses")
-        println("Total expenses: $total")
+        result += "Meal expenses: $mealExpenses\n"
+        result += "Total expenses: $total"
+        println(result)
     }
 
     private fun isOverLimit(expense: Expense) =
