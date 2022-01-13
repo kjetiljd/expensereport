@@ -70,9 +70,7 @@ class HelloTest {
     }
 
     private fun expense(type: ExpenseType, amount: Int): Expense {
-        val dinner = Expense()
-        dinner.type = type
-        dinner.amount = amount
+        val dinner = Expense(type = type, amount = amount)
         return dinner
     }
 
