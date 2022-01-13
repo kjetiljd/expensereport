@@ -2,12 +2,12 @@ package org.nelkinda.training
 
 import java.util.*
 
-enum class ExpenseType(val text: String) {
-    DINNER("Dinner"),
-    BREAKFAST("Breakfast"),
+enum class ExpenseType(val text: String, val limit: Int? = null) {
+    DINNER("Dinner", 5000),
+    BREAKFAST("Breakfast", 1000),
     CAR_RENTAL("Car Rental");
 
-    fun isOverLimit(amount: Int) = this == DINNER && amount > 5000 || this == BREAKFAST && amount > 1000
+    fun isOverLimit(amount: Int) = if (limit == null) false else amount > limit
 }
 
 data class Expense(
