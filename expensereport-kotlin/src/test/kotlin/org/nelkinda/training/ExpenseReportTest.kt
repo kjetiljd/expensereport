@@ -2,7 +2,6 @@ package org.nelkinda.training
 
 import com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut
 import org.approvaltests.Approvals
-import org.junit.Ignore
 import org.junit.Test
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -93,7 +92,8 @@ class ExpenseReportTest {
         val typesWithoutLimit = listOf(ExpenseType.CAR_RENTAL)
 
         typesWithoutLimit.forEach { expenseType ->
-            assertFalse(ExpenseReport().isOverLimit(Expense(type = expenseType, Integer.MAX_VALUE)))
+            ExpenseReport()
+            assertFalse(Expense(type = expenseType, Integer.MAX_VALUE).isOverLimit())
         }
     }
 
@@ -104,9 +104,11 @@ class ExpenseReportTest {
         typesWithLimit.forEach { expenseType ->
             val expenseClearlyOverLimit = Expense(type = expenseType, Integer.MAX_VALUE)
             val expenseClearlyUnderLimit = Expense(type = expenseType, 0)
-            
-            assertTrue(ExpenseReport().isOverLimit(expenseClearlyOverLimit))
-            assertFalse(ExpenseReport().isOverLimit(expenseClearlyUnderLimit))
+
+            ExpenseReport()
+            assertTrue(expenseClearlyOverLimit.isOverLimit())
+            ExpenseReport()
+            assertFalse(expenseClearlyUnderLimit.isOverLimit())
         }
     }
 
