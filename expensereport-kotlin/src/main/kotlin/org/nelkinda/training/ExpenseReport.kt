@@ -31,8 +31,6 @@ class ExpenseReport {
         println(result)
     }
 
-    private fun expenseLine(expense: Expense): String {
-        val mealOverExpensesMarker = if (expense.isOverLimit) "X" else " "
-        return expense.name + "\t" + expense.amount + "\t" + mealOverExpensesMarker
-    }
+    private fun expenseLine(expense: Expense) =
+        expense.name + "\t" + expense.amount + "\t" + if (expense.isOverLimit) "X" else " "
 }
