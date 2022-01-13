@@ -10,16 +10,13 @@ data class Expense(
     val type: ExpenseType? = null,
     val amount: Int? = null) {
 
-    fun name(): String {
-        val expenseName =
-            when (this.type) {
-                ExpenseType.DINNER -> "Dinner"
-                ExpenseType.BREAKFAST -> "Breakfast"
-                ExpenseType.CAR_RENTAL -> "Car Rental"
-                null -> ""
-            }
-        return expenseName
-    }
+    fun name(): String =
+        when (type) {
+            ExpenseType.DINNER -> "Dinner"
+            ExpenseType.BREAKFAST -> "Breakfast"
+            ExpenseType.CAR_RENTAL -> "Car Rental"
+            null -> ""
+        }
 }
 
 class ExpenseReport {
