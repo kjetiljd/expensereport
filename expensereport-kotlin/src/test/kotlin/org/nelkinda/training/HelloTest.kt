@@ -34,15 +34,24 @@ class HelloTest {
     }
 
     @Test
-    @Ignore("WIP")
     fun `golden master for all known expense types`() {
-
-        val noExpenses = emptyList<Expense>()
+        val noExpenses = listOf(
+            expense(ExpenseType.DINNER, 800),
+            expense(ExpenseType.BREAKFAST, 350),
+            expense(ExpenseType.CAR_RENTAL, 1200)
+        )
 
         val actual = tapSystemOut {
             ExpenseReport().printReport(noExpenses)
         }
         Approvals.verify(reportWithoutHeading(actual))
+    }
+
+    private fun expense(type: ExpenseType, amount: Int): Expense {
+        val dinner = Expense()
+        dinner.type = type
+        dinner.amount = amount
+        return dinner
     }
 
     private fun reportWithoutHeading(actual: String) = actual.lines().drop(1).joinToString("\n")
