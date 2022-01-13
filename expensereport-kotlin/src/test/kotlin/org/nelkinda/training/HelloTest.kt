@@ -70,8 +70,7 @@ class HelloTest {
     }
 
     private fun expense(type: ExpenseType, amount: Int): Expense {
-        val dinner = Expense(type = type, amount = amount)
-        return dinner
+        return Expense(type = type, amount = amount)
     }
 
     private fun String.withoutDynamicHeading() = this.lines().drop(1).joinToString("\n")
