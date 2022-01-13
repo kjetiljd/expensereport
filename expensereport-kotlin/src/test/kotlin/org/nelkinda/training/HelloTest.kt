@@ -35,9 +35,9 @@ class HelloTest {
     @Test
     fun `golden master for all known expense types`() {
         val expenses = listOf(
-            expense(ExpenseType.DINNER, 800),
-            expense(ExpenseType.BREAKFAST, 350),
-            expense(ExpenseType.CAR_RENTAL, 1200)
+            Expense(type = ExpenseType.DINNER, amount = 800),
+            Expense(type = ExpenseType.BREAKFAST, amount = 350),
+            Expense(type = ExpenseType.CAR_RENTAL, amount = 1200)
         )
 
         val actual = tapSystemOut {
@@ -49,8 +49,8 @@ class HelloTest {
     @Test
     fun `golden master for expenses over limit`() {
         val expensesOverLimit = listOf(
-            expense(ExpenseType.DINNER, 5001),
-            expense(ExpenseType.BREAKFAST, 1001),
+            Expense(type = ExpenseType.DINNER, amount = 5001),
+            Expense(type = ExpenseType.BREAKFAST, amount = 1001),
         )
 
         val actual = tapSystemOut {
@@ -67,10 +67,6 @@ class HelloTest {
 
         // then
 
-    }
-
-    private fun expense(type: ExpenseType, amount: Int): Expense {
-        return Expense(type = type, amount = amount)
     }
 
     private fun String.withoutDynamicHeading() = this.lines().drop(1).joinToString("\n")
