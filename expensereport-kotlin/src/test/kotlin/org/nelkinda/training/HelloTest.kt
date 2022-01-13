@@ -33,7 +33,7 @@ class HelloTest {
             ExpenseReport().printReport(noExpenses)
         }
 
-        val expected = """Expenses \w{3} \w{3} \d{1,2} \d\d:\d\d:\d\d [A-Z]{3} 20\d\d""".toRegex()
+        val expected = """Expenses \w{3} \w{3} \d{1,2} \d\d:\d\d:\d\d [A-Z]{3,4} 20\d\d""".toRegex()
         assertTrue(actual.lines().first().matches(expected))
 
     }
