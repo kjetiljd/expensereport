@@ -94,7 +94,7 @@ class ExpenseReportTest {
         val typesWithoutLimit = listOf(ExpenseType.CAR_RENTAL)
 
         typesWithoutLimit.forEach { expenseType ->
-            assertFalse(Expense(type = expenseType, Integer.MAX_VALUE).isOverLimit())
+            assertFalse(Expense(type = expenseType, Integer.MAX_VALUE).isOverLimit)
         }
     }
 
@@ -106,15 +106,15 @@ class ExpenseReportTest {
             val expenseClearlyOverLimit = Expense(type = expenseType, Integer.MAX_VALUE)
             val expenseClearlyUnderLimit = Expense(type = expenseType, 0)
 
-            assertTrue(expenseClearlyOverLimit.isOverLimit())
-            assertFalse(expenseClearlyUnderLimit.isOverLimit())
+            assertTrue(expenseClearlyOverLimit.isOverLimit)
+            assertFalse(expenseClearlyUnderLimit.isOverLimit)
         }
     }
     
     @Test
     fun `isOverLimit on a null expense type`() {
         val expenseWithoutType = Expense(type = null, amount = Integer.MAX_VALUE)
-        assertFalse(expenseWithoutType.isOverLimit())
+        assertFalse(expenseWithoutType.isOverLimit)
     }
 
     private fun String.withoutDynamicHeading() = this.lines().drop(1).joinToString("\n")

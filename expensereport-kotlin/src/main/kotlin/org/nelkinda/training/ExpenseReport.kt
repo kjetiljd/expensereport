@@ -13,26 +13,26 @@ enum class ExpenseType(val text: String, private val limit: Int? = null, val isM
 
 
 data class Expense(val type: ExpenseType? = null, val amount: Int? = null) {
-    fun name() = type?.text ?: ""
-    fun isOverLimit() = type?.isOverLimit(amount!!) ?: false
-    fun isMeal() = type?.isMealType ?: false
+    val name get() = type?.text ?: ""
+    val isOverLimit get() = type?.isOverLimit(amount!!) ?: false
+    val isMeal get() = type?.isMealType ?: false
 }
 
-private fun List<Expense>.mealTotal() = this.filter(Expense::isMeal).sumOf { it.amount!! }
-private fun List<Expense>.total() = this.sumOf { it.amount!! }
+private val List<Expense>.mealTotal get() = this.filter(Expense::isMeal).sumOf { it.amount!! }
+private val List<Expense>.total get() = this.sumOf { it.amount!! }
 
 
 class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
         val result = "Expenses ${Date()}\n" +
                 expenses.map { expenseLine(it) + "\n" }.joinToString("") +
-                "Meal expenses: ${expenses.mealTotal()}\n" +
-                "Total expenses: ${expenses.total()}"
+                "Meal expenses: ${expenses.mealTotal}\n" +
+                "Total expenses: ${expenses.total}"
         println(result)
     }
 
     private fun expenseLine(expense: Expense): String {
-        val mealOverExpensesMarker = if (expense.isOverLimit()) "X" else " "
-        return expense.name() + "\t" + expense.amount + "\t" + mealOverExpensesMarker
+        val mealOverExpensesMarker = if (expense.isOverLimit) "X" else " "
+        return expense.name + "\t" + expense.amount + "\t" + mealOverExpensesMarker
     }
 }
