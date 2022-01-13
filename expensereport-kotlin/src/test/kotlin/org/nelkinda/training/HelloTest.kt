@@ -46,9 +46,17 @@ class HelloTest {
         Approvals.verify(actual.withoutDynamicHeading())
     }
 
-    @Test @Ignore("WIP")
+    @Test
     fun `golden master for expenses over limit`() {
+        val expensesOverLimit = listOf(
+            expense(ExpenseType.DINNER, 5001),
+            expense(ExpenseType.BREAKFAST, 1001),
+        )
 
+        val actual = tapSystemOut {
+            ExpenseReport().printReport(expensesOverLimit)
+        }
+        Approvals.verify(actual.withoutDynamicHeading())
     }
 
     @Test @Ignore("WIP")
