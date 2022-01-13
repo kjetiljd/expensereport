@@ -5,6 +5,7 @@ import java.util.*
 enum class ExpenseType(val text: String, private val limit: Int? = null, val isMealType: Boolean = false) {
     DINNER("Dinner", 5000, true),
     BREAKFAST("Breakfast", 1000, true),
+    LUNCH("Lunch", 2000, true),
     CAR_RENTAL("Car Rental");
 
     fun isOverLimit(amount: Int) = if (limit == null) false else amount > limit

@@ -38,6 +38,7 @@ class ExpenseReportTest {
         val expenses = listOf(
             Expense(type = ExpenseType.DINNER, amount = 800),
             Expense(type = ExpenseType.BREAKFAST, amount = 350),
+            Expense(type = ExpenseType.LUNCH, amount = 900),
             Expense(type = ExpenseType.CAR_RENTAL, amount = 1200)
         )
 
@@ -52,6 +53,7 @@ class ExpenseReportTest {
         val expensesOverLimit = listOf(
             Expense(type = ExpenseType.DINNER, amount = 5001),
             Expense(type = ExpenseType.BREAKFAST, amount = 1001),
+            Expense(type = ExpenseType.LUNCH, amount = 2001),
         )
 
         val actual = tapSystemOut {
@@ -98,7 +100,7 @@ class ExpenseReportTest {
 
     @Test
     fun `isOverLimit for expense types with limits`() {
-        val typesWithLimit = listOf(ExpenseType.DINNER, ExpenseType.BREAKFAST)
+        val typesWithLimit = listOf(ExpenseType.DINNER, ExpenseType.BREAKFAST, ExpenseType.LUNCH)
 
         typesWithLimit.forEach { expenseType ->
             val expenseClearlyOverLimit = Expense(type = expenseType, Integer.MAX_VALUE)
