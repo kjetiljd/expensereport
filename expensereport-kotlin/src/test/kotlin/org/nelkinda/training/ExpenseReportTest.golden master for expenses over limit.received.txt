@@ -1,5 +1,3 @@
 Dinner	5001	X
-
-Breakfast	1001	X
-Meal expenses: 6002
+Breakfast	1001	XMeal expenses: 6002
 Total expenses: 6002

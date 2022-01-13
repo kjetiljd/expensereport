@@ -1,7 +1,4 @@
 Dinner	800	 
-
 Breakfast	350	 
-
-Car Rental	1200	 
-Meal expenses: 1150
+Car Rental	1200	 Meal expenses: 1150
 Total expenses: 2350

@@ -1,0 +1,2 @@
+	666	 Meal expenses: 0
+Total expenses: 666
