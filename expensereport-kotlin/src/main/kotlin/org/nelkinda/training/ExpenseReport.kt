@@ -8,8 +8,19 @@ enum class ExpenseType {
 
 data class Expense(
     val type: ExpenseType? = null,
-    val amount: Int? = null
-)
+    val amount: Int? = null) {
+
+    fun expenseName(): String {
+        val expenseName =
+            when (this.type) {
+                ExpenseType.DINNER -> "Dinner"
+                ExpenseType.BREAKFAST -> "Breakfast"
+                ExpenseType.CAR_RENTAL -> "Car Rental"
+                null -> ""
+            }
+        return expenseName
+    }
+}
 
 class ExpenseReport {
     fun printReport(expenses: List<Expense>) {
@@ -24,7 +35,7 @@ class ExpenseReport {
                 mealExpenses += expense.amount!!
             }
 
-            val expenseName = expenseName(expense)
+            val expenseName = expense.expenseName()
 
             val expenseOverLimitMarker = "X"
             val mealOverExpensesMarker = if (isOverLimit(expense)) expenseOverLimitMarker else " "
@@ -39,16 +50,6 @@ class ExpenseReport {
         println(result)
     }
 
-    private fun expenseName(expense: Expense): String {
-        val expenseName =
-            when (expense.type) {
-                ExpenseType.DINNER -> "Dinner"
-                ExpenseType.BREAKFAST -> "Breakfast"
-                ExpenseType.CAR_RENTAL -> "Car Rental"
-                null -> ""
-            }
-        return expenseName
-    }
 
     internal fun isOverLimit(expense: Expense) =
         expense.type == ExpenseType.DINNER && expense.amount!! > 5000 || expense.type == ExpenseType.BREAKFAST && expense.amount!! > 1000
