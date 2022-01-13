@@ -103,7 +103,10 @@ class ExpenseReportTest {
 
         typesWithLimit.forEach { expenseType ->
             val expenseClearlyOverLimit = Expense(type = expenseType, Integer.MAX_VALUE)
+            val expenseClearlyUnderLimit = Expense(type = expenseType, 0)
+            
             assertTrue(ExpenseReport().isOverLimit(expenseClearlyOverLimit))
+            assertFalse(ExpenseReport().isOverLimit(expenseClearlyUnderLimit))
         }
     }
 
