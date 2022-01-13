@@ -7,7 +7,7 @@ import org.junit.Test
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
-class HelloTest {
+class ExpenseReportTest {
 
     @Test
     fun `first line in report has correct format`() {
